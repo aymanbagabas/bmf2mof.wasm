@@ -5,7 +5,11 @@ A WebAssembly forked version of [bmfdec](https://github.com/pali/bmfdec) that wo
 ### Build
 
 1. Download and install [Emscripten](https://emscripten.org/).
-2. Build `bmf2mof.js` using `emcc bmfdec/bmf2mof.c -s "EXPORTED_FUNCTIONS=['_parse_data']" -s "MODULARIZE=1" -s "EXPORT_NAME='bmf2mof'"  -s "BINARYEN_METHOD='native-wasm'" -s "WASM=1" -O2 -o bmf2mof.js`.
+2. Build `bmf2mof.js` using
+
+``` sh
+emcc bmfdec/bmf2mof.c -s "EXPORTED_FUNCTIONS=['_parse_data']" -s "MODULARIZE=1" -s "EXPORT_NAME='bmf2mof'" -s "WASM=1" -O2 -o bmf2mof.js`.
+```
 
 Here we replaced the `main()` function in `bmfdec/bmfdec.c` with `parse_data(uint32_t *pin, ssize_t lin)` and then exported that function so we can use it within JavaScript/WebAssembly.
 
