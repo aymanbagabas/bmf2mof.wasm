@@ -153,11 +153,9 @@ const wqba = [
 
 const buf = new Uint8Array(wqba)
 
-var nByte = 2
-
 bmf2mof().then(bmf => {
     function arrayToPtr(array) {
-        var ptr = bmf._malloc(array.length * nByte)
+        var ptr = bmf._malloc(array.length)
         bmf.HEAPU8.set(array, ptr)
         return ptr
     }
